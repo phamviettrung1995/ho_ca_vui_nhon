@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Fun</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #87CEEB;
+        }
+
+        .object {
+            position: absolute;
+            transition: transform 0.5s;
+        }
+
+        .bubble {
+            width: 20px;
+            height: 20px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            opacity: 0.8;
+            animation: rise 5s infinite linear;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0); opacity: 0.8; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <img src="diver1.png" class="object" id="diver1" width="100">
+    <img src="diver2.png" class="object" id="diver2" width="100">
+    <img src="diver3.png" class="object" id="diver3" width="100">
+    <img src="turtle.png" class="object" id="turtle" width="100">
+    <img src="faintschool.png" class="object" id="faintschool" width="100">
+    <img src="goldfishschool.png" class="object" id="goldfishschool" width="100">
+    <img src="shark.png" class="object" id="shark" width="100">
+
+    <script>
+        const objects = ["diver1", "diver2", "diver3", "turtle", "faintschool", "goldfishschool", "shark"];
+
+        function randomMovement() {
+            objects.forEach(id => {
+                const element = document.getElementById(id);
+                element.style.left = `${Math.random() * window.innerWidth}px`;
+                element.style.top = `${Math.random() * window.innerHeight}px`;
+            });
+        }
+
+        function createBubbles() {
+            setInterval(() => {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                bubble.style.left = `${Math.random() * window.innerWidth}px`;
+                document.body.appendChild(bubble);
+                bubble.addEventListener('animationend', () => bubble.remove());
+            }, 500);
+        }
+
+        function bounceMovement() {
+            objects.forEach(id => {
+                const element = document.getElementById(id);
+                let x = Math.random() * window.innerWidth;
+                let y = Math.random() * window.innerHeight;
+                let dx = Math.random() * 2 - 1;
+                let dy = Math.random() * 2 - 1;
+
+                setInterval(() => {
+                    if (x < 0 || x > window.innerWidth - element.width) dx *= -1;
+                    if (y < 0 || y > window.innerHeight - element.height) dy *= -1;
+                    x += dx * 5;
+                    y += dy * 5;
+                    element.style.transform = `translate(${x}px, ${y}px)`;
+                }, 50);
+            });
+        }
+
+        window.onload = () => {
+            randomMovement();
+            bounceMovement();
+            createBubbles();
+        };
+    </script>
+</body>
+</html>
