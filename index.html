@@ -9,8 +9,23 @@
             margin: 0;
             overflow: hidden;
             background-color: #87CEEB;
+            font-family: Arial, sans-serif;
         }
 
+        /* Thiết kế tiêu đề */
+        h1 {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 3em;
+            color: #ffffff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Thiết kế đối tượng */
         .object {
             position: absolute;
             transition: transform 0.5s;
@@ -34,6 +49,10 @@
     </style>
 </head>
 <body>
+    <!-- Thêm tiêu đề -->
+    <h1>Welcome to Aqua Fun!</h1>
+
+    <!-- Đối tượng hồ cá -->
     <img src="diver1.png" class="object" id="diver1" width="100">
     <img src="diver2.png" class="object" id="diver2" width="100">
     <img src="diver3.png" class="object" id="diver3" width="100">
