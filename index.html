@@ -13,10 +13,10 @@
         }
         h1 {
             position: absolute;
-            top: 20px;
+            top: 10px;
             width: 100%;
             text-align: center;
-            font-size: 3em;
+            font-size: 2.5em;
             color: #ffffff;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             font-weight: bold;
@@ -39,6 +39,14 @@
         @keyframes rise {
             0% { transform: translateY(0); opacity: 0.8; }
             100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .object {
+                width: 60px;
+            }
         }
     </style>
 </head>
